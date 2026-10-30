@@ -1,1 +1,62 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Homepage</title><link rel="stylesheet" href="style.css"></head><body><div class="wrap"><header><div class="top"><span class="tiny">krr's web</span><button id="marioBtn" type="button">mario</button></div><h1>My Homepage<span class="cursor">_</span></h1><p class="sub">welcome </p><nav><a href="#home" data-page="home">HOME</a><a href="#projects" data-page="projects">PROJECTS</a><a href="#news" data-page="news">NEWS</a></nav></header><main><section id="home" class="page"><h2>Welcome!</h2><p>Hello, visitor. This is my personal homepage.</p><p>I make games, experiments, and other computer stuff. Have a look around!</p><div class="notice"><b>NOTICE BOARD</b><p>Website is now online. Check the Projects page for downloads.</p></div><p class="old">✦ Best viewed with curiosity ✦</p></section><section id="projects" class="page" hidden><h2>Projects</h2><p class="muted">A small collection of things I've made.</p><article class="project"><div class="project-head"><strong>ABDUCTED — Demo</strong><span class="tag">GAME</span></div><p>A retro-style first-person shooter project.</p><a class="download" href="downloads/abducted-demo.zip" download>↓ Download ZIP</a></article><article class="project"><div class="project-head"><strong>New project</strong><span class="tag">COMING SOON</span></div><p>More projects will be added here.</p></article><p class="hint">To publish your ZIP, place <code>abducted-demo.zip</code> in the <code>downloads</code> folder. Edit this page to add more projects.</p></section><section id="news" class="page" hidden><h2>News</h2><div class="entry"><time>2026.10.08</time><strong>Website launched!</strong><p>Welcome to the new homepage. More updates coming soon.</p></div><div class="entry"><time>2026.10.08</time><strong>Projects page</strong><p>The downloads section is ready.</p></div></section></main><footer><span>© 2026 My Homepage</span><span>Last updated: October 2026</span></footer></div><div id="marioOverlay" class="overlay" hidden><div class="fire-scene"><div class="flames" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="mario-text">MARIO</div><div class="embers" aria-hidden="true"></div></div><button id="closeMario" class="close" aria-label="Close animation">✕ CLOSE</button></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+</head>
+<body>
+  <nav>
+    <button type="button" onclick="showPage('home')">Home</button>
+    <button type="button" onclick="showPage('news')">News</button>
+    <button type="button" onclick="showPage('projects')">Projects</button>
+  </nav>
+
+  <section id="home">
+    <h1>Welcome to my website</h1>
+    <p>You can download my games here</p>
+  </section>
+
+  <section id="news" hidden>
+    <h1>Science News and Facts</h1>
+    <article>
+      <h2>1. Gravitational-Wave Chirp Mass</h2>
+      <p>During the early inspiral of two compact objects in an approximately circular orbit, the leading-order evolution of the gravitational-wave frequency is primarily determined by the chirp mass: M<sub>c</sub> = (m<sub>1</sub>m<sub>2</sub>)<sup>3/5</sup> / (m<sub>1</sub> + m<sub>2</sub>)<sup>1/5</sup>. Measuring how quickly the frequency rises constrains this particular mass combination. Higher-order effects carry information about mass ratio and spins.</p>
+    </article>
+    <article>
+      <h2>2. Black Hole Entropy and Information</h2>
+      <p>The Bekenstein-Hawking entropy of a stationary black hole is S = k<sub>B</sub>c<sup>3</sup>A / (4G&#8463;), where A is the event-horizon area. Unlike ordinary thermodynamic systems, the entropy scales with area rather than volume. Explaining how this entropy and Hawking radiation coexist with unitary quantum mechanics is central to the black-hole information problem.</p>
+    </article>
+    <article>
+      <h2>3. Neutrino Oscillations in Matter</h2>
+      <p>Neutrino flavor oscillations arise because flavor states are superpositions of mass eigenstates. In matter, coherent forward scattering of electron neutrinos changes their effective propagation Hamiltonian. The Mikheyev-Smirnov-Wolfenstein (MSW) effect can strongly enhance flavor conversion at a resonance, depending on neutrino energy, electron density, and mixing parameters.</p>
+    </article>
+    <article>
+      <h2>4. The Cosmic Microwave Background's Acoustic Peaks</h2>
+      <p>Before recombination, photons and baryons behaved as a coupled fluid. Gravity compressed overdense regions while photon pressure opposed collapse, producing acoustic oscillations. Their frozen-in phases left a series of peaks in the microwave background angular power spectrum. The peak positions and heights constrain spatial geometry, baryon abundance, and dark matter density within a cosmological model.</p>
+    </article>
+    <article>
+      <h2>5. Quantum Tunneling and Stellar Fusion</h2>
+      <p>In stellar cores, many colliding nuclei have insufficient classical energy to overcome their electrostatic repulsion. Quantum tunneling makes fusion possible nonetheless. Reaction rates are governed by the interplay between the thermal distribution of particle energies and the energy-dependent tunneling probability, creating a characteristic Gamow peak.</p>
+    </article>
+  </section>
+
+  <section id="projects" hidden>
+    <h1>Projects</h1>
+    <p>DOMO v0.1</p>
+    <p><a href="data/download/DOMO.exe" download>Download DOMO.exe</a></p>
+    <p><a href="data/download/Mars.zip" download>Download Mars.zip</a></p>
+    <p><a href="data/download/Earth.zip" download>Download Earth.zip</a></p>
+    <p><a href="data/download/Venus.zip" download>Download Venus.zip</a></p>
+    <p><a href="data/download/Mercury.zip" download>Download Mercury.zip</a></p>
+  </section>
+
+  <script>
+    function showPage(page) {
+      for (const section of document.querySelectorAll('section')) {
+        section.hidden = section.id !== page;
+      }
+    }
+  </script>
+</body>
+</html>
