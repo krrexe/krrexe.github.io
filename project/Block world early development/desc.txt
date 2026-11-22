@@ -1,0 +1,5 @@
+So, this game is inspired by 2000s Roblox game.
+Not multiplayer yet. 
+You can move by WASD, look around by pressing right mouse click and drag it.
+Flat map only for now.
+Enjoy.
