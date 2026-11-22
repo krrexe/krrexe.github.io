@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Homepage of Krr</title>
+  <style>
+body {margin:8px; background:#c7c7c7 url("../assets/background.png") repeat; color:#000; font-family:"Times New Roman",Times,serif;}
+.logo {position:absolute;top:8px;right:8px;width:216px;height:300px;}
+h1 {margin:8px 230px 22px 8px;text-align:left;font-size:60px;line-height:1.1;font-weight:bold;}
+nav {display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:24px 0;}
+nav a {display:inline-block;padding:5px 13px;background:#c0c0c0;border:2px solid;border-color:#fff #777 #777 #fff;color:#000;text-decoration:none;font:16px Arial,sans-serif;}
+nav a:active {border-color:#777 #fff #fff #777;}
+main {margin-left:8px;max-width:750px;}
+h2 {font-size:30px;margin:0 0 14px;}
+p {font-size:18px;}
+#aboutme-content {white-space:pre-wrap;font-size:18px;font-family:"Times New Roman",Times,serif;}
+#aboutme-fallback {display:none;width:100%;min-height:220px;border:0;background:transparent;}
+@media(max-width:650px){.logo{width:108px;height:auto;} h1{font-size:38px;margin-right:115px;} nav{margin-top:24px;} nav a{font-size:14px;}}
+
+  </style>
+</head>
+<body>
+  <img class="logo" src="../assets/logo.png" alt="Krr logo">
+  <h1>Homepage of Krr</h1>
+  <nav aria-label="Navigation">
+    <a href="../index.html">Home</a>
+    <a href="../AboutMe/index.html">About Me</a>
+    <a href="../Projects/index.html">Projects</a>
+    <a href="../Blog/index.html">Blog</a>
+    <a href="../Links/index.html">Links</a>
+  </nav>
+  <main>
+    <h2>About Me</h2>
+    <div id="aboutme-content"></div>
+    <iframe id="aboutme-fallback" src="../assets/aboutme.txt" title="About Me"></iframe>
+  </main>
+  <script>
+    fetch("../assets/aboutme.txt")
+      .then(function (response) {
+        if (!response.ok) throw new Error("Could not load aboutme.txt");
+        return response.text();
+      })
+      .then(function (content) {
+        document.getElementById("aboutme-content").textContent = content;
+      })
+      .catch(function () {
+        // Local file:// pages can block fetch; the iframe loads the TXT directly.
+        document.getElementById("aboutme-fallback").style.display = "block";
+      });
+  </script>
+</body>
+</html>

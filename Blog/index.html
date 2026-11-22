@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Homepage of Krr</title>
+  <style>
+body {margin:8px; background:#c7c7c7 url("../assets/background.png") repeat; color:#000; font-family:"Times New Roman",Times,serif;}
+.logo {position:absolute;top:8px;right:8px;width:216px;height:300px;}
+h1 {margin:8px 230px 22px 8px;text-align:left;font-size:60px;line-height:1.1;font-weight:bold;}
+nav {display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:24px 0;}
+nav a {display:inline-block;padding:5px 13px;background:#c0c0c0;border:2px solid;border-color:#fff #777 #777 #fff;color:#000;text-decoration:none;font:16px Arial,sans-serif;}
+nav a:active {border-color:#777 #fff #fff #777;}
+main {margin-left:8px;max-width:750px;}
+h2 {font-size:30px;margin:0 0 14px;}
+p {font-size:18px;}
+.post {clear:both; border:1px solid #777; background:rgba(230,230,230,.72); margin:12px 0; padding:10px; max-width:740px;}
+.post h3 {font-size:23px; margin:0 0 8px;}
+.post .body {white-space:pre-wrap;overflow-wrap:anywhere;font-size:18px;margin:8px 0 12px;}
+.post .photos img {display:block;max-width:100%;height:auto;margin:10px 0;}
+.post .external {display:inline-block;margin-top:8px;color:#0000ee;text-decoration:underline;}
+
+@media(max-width:650px){.logo{width:108px;height:auto;} h1{font-size:38px;margin-right:115px;} nav{margin-top:24px;} nav a{font-size:14px;}}
+
+  </style>
+</head>
+<body>
+  <img class="logo" src="../assets/logo.png" alt="Krr logo">
+  <h1>Homepage of Krr</h1>
+  <nav aria-label="Navigation">
+    <a href="../index.html">Home</a>
+    <a href="../AboutMe/index.html">About Me</a>
+    <a href="../Projects/index.html">Projects</a>
+    <a href="../Blog/index.html">Blog</a>
+    <a href="../Links/index.html">Links</a>
+  </nav>
+  <main>
+    <h2>Blog</h2>
+    <div id="blog-list"></div>
+  </main>
+  <script id="built-blog-data" type="application/json">[{"name": "Personally favorite minecraft mod", "body": "I think the best mod in minercaft is SIMPLELY, twilight forest.\nLike, the bosses are PERFECT. they have their own unique abilities, phases etc.\nAlso, the player leveling? system is kinda good. I don't know what word to use.\nYou enter the dimension, fight boss, become stronger.\nAnd always, it isn't just \"easy\" it's hard. It's HARD. When first playthrough tho.\nAnyways, I recently played the mod with my friend and it was fun.\nHope ya'll enjoy.\nI left the link for download.", "photos": ["blogs/Personally%20favorite%20minecraft%20mod/photo1.png"], "link": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest"}, {"name": "recent gameplay of wolfenstein the new order", "body": "soooo i played wolfenstein the new order.\nand it. was. FIRE.\nI liked whole dark atmosphere, nazi killing mechanism where you pick up nazi machine gun and just pours it down while dual wielding it and wolfenstening all the corridor,\nit's just insane.\n99/10 i strongly recommend you to play this\nI'll leave a link. hope you enjoy", "photos": ["blogs/recent%20gameplay%20of%20wolfenstein%20the%20new%20order/photo1.png"], "link": "https://store.steampowered.com/app/201810/Wolfenstein_The_New_Order/"}]</script>
+  <script>
+    (function () {
+      var target = document.getElementById('blog-list');
+      var built = JSON.parse(document.getElementById('built-blog-data').textContent);
+      function make(tag, cls, value) {
+        var el = document.createElement(tag);
+        if (cls) el.className = cls;
+        if (value !== undefined) el.textContent = value;
+        return el;
+      }
+      function show(items) {
+        target.replaceChildren();
+        if (!Array.isArray(items)) return;
+        items.forEach(function(item) {
+          var post = make('article', 'post');
+          post.appendChild(make('h3', '', item.name));
+          if (item.body) post.appendChild(make('div', 'body', item.body));
+          if (item.photos && item.photos.length) {
+            var photos = make('div', 'photos');
+            item.photos.forEach(function(path) {
+              var pic = make('img');
+              pic.src = '../' + path;
+              pic.alt = item.name;
+              pic.loading = 'lazy';
+              photos.appendChild(pic);
+            });
+            post.appendChild(photos);
+          }
+          if (item.link) {
+            var link = make('a', 'external', 'Link');
+            link.href = item.link;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            post.appendChild(link);
+          }
+          target.appendChild(post);
+        });
+      }
+      show(built);
+      if (location.protocol === 'http:' || location.protocol === 'https:') {
+        fetch('../blogs/manifest.json?reload=' + Date.now(), {cache:'no-store'})
+          .then(function(r) { if (!r.ok) throw Error('Manifest unavailable'); return r.json(); })
+          .then(function(items) { if (Array.isArray(items)) show(items); })
+          .catch(function() { /* Keep prebuilt posts. */ });
+      }
+    })();
+  </script>
+</body>
+</html>

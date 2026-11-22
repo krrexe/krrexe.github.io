@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links - Homepage of Krr</title>
+  <style>
+body {margin:8px; background:#c7c7c7 url("../assets/background.png") repeat; color:#000; font-family:"Times New Roman",Times,serif;}
+.logo {position:absolute;top:8px;right:8px;width:216px;height:300px;}
+h1 {margin:8px 230px 22px 8px;text-align:left;font-size:60px;line-height:1.1;font-weight:bold;}
+nav {display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:24px 0;}
+nav a {display:inline-block;padding:5px 13px;background:#c0c0c0;border:2px solid;border-color:#fff #777 #777 #fff;color:#000;text-decoration:none;font:16px Arial,sans-serif;}
+nav a:active {border-color:#777 #fff #fff #777;}
+main {margin-left:8px;max-width:750px;}
+h2 {font-size:30px;margin:0 0 14px;}
+.link-item {margin:0 0 18px; padding:0 0 10px; border-bottom:1px solid #888; overflow-wrap:anywhere;}
+.link-item h3 {font-size:22px; margin:0 0 5px;}
+.link-item h3 a {color:#0000ee; text-decoration:underline;}
+.link-desc {font-size:18px; margin:0 0 6px; white-space:pre-wrap;}
+.link-url {font-size:15px; color:#0000ee; text-decoration:underline;}
+
+p {font-size:18px;}
+@media(max-width:650px){.logo{width:108px;height:auto;} h1{font-size:38px;margin-right:115px;} nav{margin-top:24px;} nav a{font-size:14px;}}
+
+  </style>
+</head>
+<body>
+  <img class="logo" src="../assets/logo.png" alt="Krr logo">
+  <h1>Homepage of Krr</h1>
+  <nav aria-label="Navigation">
+    <a href="../index.html">Home</a>
+    <a href="../AboutMe/index.html">About Me</a>
+    <a href="../Projects/index.html">Projects</a>
+    <a href="../Blog/index.html">Blog</a>
+    <a href="../Links/index.html">Links</a>
+  </nav>
+  <main>
+    <h2>Links</h2>
+    <div id="links-list"></div>
+  </main>
+  <script id="built-links-data" type="application/json">[{"title": "People = Shit - slipknot", "linkdesc": "This music is such fire.", "link": "https://www.youtube.com/watch?v=qqK1FrO3BdM\u0026list=RDqqK1FrO3BdM\u0026start_radio=1", "rawlink": "www.youtube.com/watch?v=qqK1FrO3BdM\u0026list=RDqqK1FrO3BdM\u0026start_radio=1"}]</script>
+  <script>
+    (function () {
+      var target = document.getElementById('links-list');
+      var prebuilt = JSON.parse(document.getElementById('built-links-data').textContent);
+      function show(items) {
+        target.replaceChildren();
+        if (!Array.isArray(items)) return;
+        items.forEach(function (item) {
+          if (!item || !item.title || !/^https?:\/\//i.test(item.link || '')) return;
+          var article = document.createElement('article');
+          article.className = 'link-item';
+          var title = document.createElement('h3');
+          var anchor = document.createElement('a');
+          anchor.textContent = item.title;
+          anchor.href = item.link;
+          anchor.target = '_blank';
+          anchor.rel = 'noopener noreferrer';
+          title.appendChild(anchor);
+          article.appendChild(title);
+          if (item.linkdesc) {
+            var desc = document.createElement('p');
+            desc.className = 'link-desc';
+            desc.textContent = item.linkdesc;
+            article.appendChild(desc);
+          }
+          var address = document.createElement('a');
+          address.className = 'link-url';
+          address.textContent = item.rawlink || item.link;
+          address.href = item.link;
+          address.target = '_blank';
+          address.rel = 'noopener noreferrer';
+          article.appendChild(address);
+          target.appendChild(article);
+        });
+      }
+      show(prebuilt);
+      if (location.protocol === 'http:' || location.protocol === 'https:') {
+        fetch('../link/manifest.json?reload=' + Date.now(), {cache: 'no-store'})
+          .then(function (res) { if (!res.ok) throw Error('Links unavailable'); return res.json(); })
+          .then(function(items) { if (Array.isArray(items)) show(items); })
+          .catch(function () { /* Keep the generated list. */ });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+BSP online is a doom engine inspired simple BSP/portal rendered deathmatch online multiplayer.
+Have fun with friend.
+
+Controls:
+Menu: arrowkey up/down
+Servers: Tab to choose, enter to join or host.
+
+Classic controls:
+Arrows up, down to move forward and backwards,
+Arrows left, right to look left and right,
+ALT+Arrows left,right to strafe left and right
+1,2,3,4,5,6 to choose weapons
+T to chat
+
+Modern controls:
+WASD to move, mouse to look, left click for shooting.
+
+1,2,3,4,5,6 to choose weapons
+T to chat
+
+Weapons:
+Pistol: Deals 10 damage
+Shotgun: Deals 20 damage
+Rifle: Deals 5 damage
+Minigun: Deals 2 damage
+Double Barrel: Deals 35 damage
+Rocket launcher: Deals 50 damage
+
+tips:
+constantly strafe to avoid getting shot, while doing that,
+use rifle or rocket launcher to shoot your friend.
+
+Servers:
+while playing you can ban player by /ban <playername> in chat.
+which will cause DATA/server/banned.txt will come out.
+you can also put icon.bmp on DATA/server/ to choose icon for server in join menu.
+if you and your friend shares same map1.map made in mapEditor.exe, 
+then you can play in completely other map.
+
+Credits:
+
+Inspired by DOOM deathmatch
+
+Gun sprite making inspired by DOOM and DOOM II
+
+Enemy sprite inspired by DOOM
+
+Map editor inspired by DOOM map editor

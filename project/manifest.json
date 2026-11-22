@@ -1,0 +1,13 @@
+[
+  {
+    "name": "BSP online",
+    "description": "BSP online is a doom engine inspired simple BSP/portal rendered deathmatch online multiplayer.\nHave fun with friend.\n\nControls:\nMenu: arrowkey up/down\nServers: Tab to choose, enter to join or host.\n\nClassic controls:\nArrows up, down to move forward and backwards,\nArrows left, right to look left and right,\nALT+Arrows left,right to strafe left and right\n1,2,3,4,5,6 to choose weapons\nT to chat\n\nModern controls:\nWASD to move, mouse to look, left click for shooting.\n\n1,2,3,4,5,6 to choose weapons\nT to chat\n\nWeapons:\nPistol: Deals 10 damage\nShotgun: Deals 20 damage\nRifle: Deals 5 damage\nMinigun: Deals 2 damage\nDouble Barrel: Deals 35 damage\nRocket launcher: Deals 50 damage\n\ntips:\nconstantly strafe to avoid getting shot, while doing that,\nuse rifle or rocket launcher to shoot your friend.\n\nServers:\nwhile playing you can ban player by /ban <playername> in chat.\nwhich will cause DATA/server/banned.txt will come out.\nyou can also put icon.bmp on DATA/server/ to choose icon for server in join menu.\nif you and your friend shares same map1.map made in mapEditor.exe, \nthen you can play in completely other map.\n\nCredits:\n\nInspired by DOOM deathmatch\n\nGun sprite making inspired by DOOM and DOOM II\n\nEnemy sprite inspired by DOOM\n\nMap editor inspired by DOOM map editor",
+    "thumbnail": "project/BSP%20online/thumbnail.png",
+    "downloads": [
+      {
+        "name": "BSP online.zip",
+        "path": "project/BSP%20online/BSP%20online.zip"
+      }
+    ]
+  }
+]
