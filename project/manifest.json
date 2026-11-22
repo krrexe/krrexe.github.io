@@ -10,4 +10,18 @@
       }
     ]
   }
+
+  
+{
+  "name": "Block world early development",
+  "description": "So, this game is inspired by 2000s Roblox game.\nNot multiplayer yet.\nYou can move by WASD, look around by pressing right mouse click and drag it.\nFlat map only for now.\nEnjoy.",
+  "thumbnail": "project/Block%20world%20early%20development/thumbnail.png",
+  "downloads": [
+    {
+      "name": "block world.zip",
+      "path": "project/Block%20world%20early%20development/block%20world.zip"
+    }
+  ]
+}
+
 ]
